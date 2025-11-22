@@ -161,6 +161,9 @@ const wsUrl = "ws://192.168.1.10:9000/";
 Así los otros dispositivos conectados a la misma red podrán acceder correctamente al servidor y recibir las alertas en tiempo real.
 
 # Resultado y Conclusión
+<img width="1920" height="1139" alt="Image" src="https://github.com/user-attachments/assets/076ac24c-00b1-4640-b276-e031441ca7a2" />
+
+Esta práctica permitió integrar un sistema distribuido completo utilizando productores, un broker de mensajería y WebSockets para visualización en tiempo real. Se logró simular sensores, procesar alertas y difundirlas de manera inmediata a múltiples clientes conectados. El uso de RabbitMQ garantizó un flujo confiable y desacoplado entre los componentes. En conjunto, la solución demuestra un monitoreo eficiente y escalable apto para escenarios industriales reales.
 
 
 ---
