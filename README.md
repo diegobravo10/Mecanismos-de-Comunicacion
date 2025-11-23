@@ -57,9 +57,8 @@ docker compose up -d
 RabbitMQ quedará disponible en:
 
 * Broker: localhost:5672
-* Consola web: [http://localhost:15672](http://localhost:15672)
 * Usuario: admin
-* Contraseña: admin
+* Contraseña: admin123
 
 ---
 
