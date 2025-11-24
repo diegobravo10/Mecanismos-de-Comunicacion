@@ -4,72 +4,24 @@
   <meta charset="utf-8" />
   <title>Dashboard Centro de Control - WS Client</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <style>
-    body{font-family: Arial, sans-serif;margin:16px}
-    .alert-list{list-style:none;padding:0}
-    .alert-item{border-radius:6px;padding:12px;margin:8px 0;display:flex;justify-content:space-between;align-items:center}
-    .meta{font-size:0.85rem;color:#222}
-    .nivel-normal{background:#f0f0f0;border-left:6px solid #888}
-    .nivel-advertencia{background:#fff7e6;border-left:6px solid #f0ad4e}
-    .nivel-crítico{background:#ffe6e6;border-left:6px solid #d9534f}
-    .small{font-size:0.85rem;color:#333}
-  </style>
+  <link rel="stylesheet" href="estilo.css">
 </head>
+
 <body>
   <h1 style="text-align: center;">Centro de Control - Alertas en Tiempo Real</h1>
+
   <div>Conexión: <span id="connStatus">desconectado</span></div>
+
+
+  <div class="counters">
+      Total: <strong id="countTotal">0</strong> —
+      Normales: <strong id="countNormal">0</strong> —
+      Advertencias: <strong id="countAdv">0</strong> —
+      Críticas: <strong id="countCrit">0</strong>
+  </div>
+
   <ul id="alerts" class="alert-list"></ul>
 
-  <script>
-    const statusEl = document.getElementById('connStatus');
-    const listEl = document.getElementById('alerts');
-    const wsUrl = "ws://localhost:9000/"; //Aqui cambiar a localhost, estoy prbando con la red local. 
-
-    function addAlert(obj){
-      const li = document.createElement('li');
-      li.className = 'alert-item nivel-' + obj.nivel;
-      li.innerHTML = `
-        <div>
-          <strong>${obj.alerta}</strong>
-          <div class="small">${obj.mensaje}</div>
-          <div class="meta">Sensor: ${obj.sensor_id} — Tipo: ${obj.tipo} — Valor: ${obj.valor}</div>
-        </div>
-        <div style="text-align:right">
-          <div class="small">${new Date(obj.timestamp).toLocaleString()}</div>
-          <div style="font-weight:bold">${obj.nivel.toUpperCase()}</div>
-        </div>
-      `;
-      // insertar arriba
-      listEl.insertBefore(li, listEl.firstChild);
-      // mantener sólo últimas 50
-      while (listEl.childElementCount > 50) listEl.removeChild(listEl.lastChild);
-    }
-
-    function connect(){
-      const ws = new WebSocket(wsUrl);
-      ws.onopen = ()=>{
-        statusEl.textContent = "conectado";
-      };
-      ws.onclose = ()=>{
-        statusEl.textContent = "desconectado";
-        // reconectar tras 2s (simple)
-        setTimeout(connect, 2000);
-      };
-      ws.onerror = (e)=>{
-        console.error("WebSocket error", e);
-        ws.close();
-      };
-      ws.onmessage = (ev)=>{
-        try {
-          const obj = JSON.parse(ev.data);
-          addAlert(obj);
-        } catch(e){
-          console.error("invalid message", e);
-        }
-      };
-    }
-
-    connect();
-  </script>
+  <script src="app.js"></script>
 </body>
 </html>

@@ -1,0 +1,50 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 16px;
+}
+
+.alert-list {
+    list-style: none;
+    padding: 0;
+}
+
+.alert-item {
+    border-radius: 6px;
+    padding: 12px;
+    margin: 8px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.meta {
+    font-size: 0.85rem;
+    color: #222;
+}
+
+.nivel-normal {
+    background: #f0f0f0;
+    border-left: 6px solid #888;
+}
+
+.nivel-advertencia {
+    background: #fff7e6;
+    border-left: 6px solid #f0ad4e;
+}
+
+.nivel-crítico {
+    background: #ffe6e6;
+    border-left: 6px solid #d9534f;
+}
+
+.small {
+    font-size: 0.85rem;
+    color: #333;
+}
+
+.counters {
+    margin: 10px 0;
+    padding: 10px;
+    background: #f7f7f7;
+    border-radius: 6px;
+}
