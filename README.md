@@ -25,6 +25,9 @@ SISMONITOREO/
 │
 └── web/
     └── ws_client.html
+    └── app.js
+    └── estilo.css
+
 ```
 
 ---
